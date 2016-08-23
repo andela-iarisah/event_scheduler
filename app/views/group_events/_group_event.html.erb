@@ -1,0 +1,14 @@
+<%= content_tag_for :tr, group_event do %>
+    <% begin_on = Date.parse(group_event.start_on.to_s) %>
+    <% end_on = Date.parse(group_event.end_on.to_s) %>
+    <td><%= group_event.name %></td>
+    <td><%= group_event.description.html_safe %></td>
+    <td><%= group_event.location %></td>
+    <td><%= group_event.start_on.strftime("%d-%m-%Y") %></td>
+    <td><%= group_event.end_on.strftime("%d-%m-%Y") %></td>
+    <td><%= end_on.mjd - begin_on.mjd %> day(s)</td>
+    <td>
+      <%= link_to 'Edit', edit_group_event_path(group_event) %>
+      <%#= link_to 'Delete', [:group_event], method: :delete, data: { confirm: 'Are you sure?' } %>
+    </td>
+<% end %>

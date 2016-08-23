@@ -1,0 +1,51 @@
+<% if @group_event.new_record? %>
+    New Group Event
+<% else %>
+    Edit Group Event
+<% end %>
+
+<%= form_for @group_event do |f| %>
+    <% if @group_event.errors[:field_name] %>
+        <% @group_event.errors.full_messages.each do |message| %>
+            <ul>
+              <li><%= message %></li>
+            </ul>
+        <% end %>
+    <% end %>
+
+    <p>
+      <%= f.label :name %>:
+      <%= f.text_field :name %>
+    </p>
+
+    <p>
+      <%= f.label :description %>:
+      <%= f.text_area :description, class: 'ckeditor', width: 100 %>
+    </p>
+
+    <p>
+      <%= f.label :location %>:
+      <%= f.text_field :location %>
+    </p>
+
+    <p>
+      <%= f.label :start_on %>:
+      <%= f.date_select :start_on, order: [:day, :month, :year] %>
+    </p>
+
+    <p>
+      <%= f.label :end_on %>:
+      <%= f.date_select :end_on, order: [:day, :month, :year] %>
+    </p>
+
+    <%= f.submit "Create Group Event", button_html: {data: {disable_with: 'Please wait...'}} %>
+<% end %>
+
+<%= link_to 'Back to Group Events List', group_events_path %>
+
+<!-- bypass ckeditor-rails bug for displaying formatted text area
+https://github.com/tsechingho/ckeditor-rails/issues/28 -->
+
+<script>
+  $('.ckeditor').ckeditor();
+</script>

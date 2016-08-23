@@ -30,6 +30,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # user authentication
 gem 'devise'
 
+# text area formatting
+gem 'ckeditor_rails'
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   gem 'factory_girl'

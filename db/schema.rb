@@ -14,11 +14,12 @@
 ActiveRecord::Schema.define(version: 20160823135130) do
 
   create_table "group_events", force: :cascade do |t|
-    t.datetime "start_at"
-    t.datetime "end_at"
+    t.datetime "start_on"
+    t.datetime "end_on"
     t.string   "name"
     t.text     "description"
     t.string   "location"
+    t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
