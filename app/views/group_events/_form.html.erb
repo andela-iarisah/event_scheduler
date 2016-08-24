@@ -56,23 +56,26 @@
     $('.ckeditor').ckeditor();
 
 
-    var enablePublishedIfValid = function () {
-      if($("#group_event_name").val().trim() &&
-         $("#group_event_location").val().trim() &&
-         $("#group_event_description").val().trim()){
-           $("#publish").attr("disabled", false);
-      }
-      else {
-          $("#publish").attr("disabled", true);
-      }
-  };
-  for (var i in CKEDITOR.instances) {
-      CKEDITOR.instances[i].on('change', function() {
+    $(document).ready(function() {
+        var enablePublishedIfValid = function () {
+            if ($("#group_event_name").val().trim() &&
+                $("#group_event_location").val().trim() &&
+                $("#group_event_description").val().trim()) {
+                    $("#publish").attr("disabled", false);
+            }
+            else {
+                $("#publish").attr("disabled", true);
+            }
+        };
         enablePublishedIfValid();
-      });
-  }
+        for (var i in CKEDITOR.instances) {
+            CKEDITOR.instances[i].on('change', function () {
+                enablePublishedIfValid();
+            });
+        }
 
-  $("#group_event_name, #group_event_location").on('input', function(){
-    enablePublishedIfValid();
-  });
+        $("#group_event_name, #group_event_location").on('input', function () {
+            enablePublishedIfValid();
+        });
+    });
 </script>
