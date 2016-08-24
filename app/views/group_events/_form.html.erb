@@ -20,7 +20,7 @@
 
     <p>
       <%= f.label :description %>:
-      <%= f.text_area :description, class: 'ckeditor', width: 100 %>
+      <%= f.text_area :description, class: 'ckeditor' %>
     </p>
 
     <p>
@@ -38,14 +38,40 @@
       <%= f.date_select :end_on, order: [:day, :month, :year] %>
     </p>
 
+    <p>
+      <%#= button_to campaign.approved?, {controller: "campaigns", action: "approve", id: campaign.id}, remote: true %>
+      <%= button_tag 'Publish', type: 'button', id: 'publish', remote: true, disabled: true %>
+      <small>* Fill the entire form to publish your group event</small>
+    </p>
+
     <%= f.submit "Create Group Event", button_html: {data: {disable_with: 'Please wait...'}} %>
 <% end %>
 
 <%= link_to 'Back to Group Events List', group_events_path %>
 
-<!-- bypass ckeditor-rails bug for displaying formatted text area
-https://github.com/tsechingho/ckeditor-rails/issues/28 -->
-
 <script>
-  $('.ckeditor').ckeditor();
+    // bypass ckeditor-rails bug for displaying formatted text area
+    // https://github.com/tsechingho/ckeditor-rails/issues/28
+    $('.ckeditor').ckeditor();
+
+
+    var enablePublishedIfValid = function () {
+      if($("#group_event_name").val().trim() &&
+         $("#group_event_location").val().trim() &&
+         $("#group_event_description").val().trim()){
+           $("#publish").attr("disabled", false);
+      }
+      else {
+          $("#publish").attr("disabled", true);
+      }
+  };
+  for (var i in CKEDITOR.instances) {
+      CKEDITOR.instances[i].on('change', function() {
+        enablePublishedIfValid();
+      });
+  }
+
+  $("#group_event_name, #group_event_location").on('input', function(){
+    enablePublishedIfValid();
+  });
 </script>
