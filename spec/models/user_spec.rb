@@ -1,5 +1,14 @@
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe User do
+  context "associations" do
+    it {is_expected.to have_many :group_events}
+  end
+
+  describe "valid user" do
+    it "has a password" do
+      user = create(:user, password: 'password')
+      expect(user.password).to eq("password")
+    end
+  end
 end

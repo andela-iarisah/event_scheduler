@@ -8,8 +8,10 @@
     <td><%= group_event.end_on.strftime("%d-%m-%Y") %></td>
     <td><%= end_on.mjd - begin_on.mjd %> day(s)</td>
     <td><%= group_event.published? ? 'Published' : 'Draft' %></td>
-    <td>
-      <%= link_to 'Edit', edit_group_event_path(group_event) %>
-      <%= link_to 'Delete', group_event, method: :delete, data: { confirm: 'Are you sure?' } %>
-    </td>
+    <% if action_name == "index" %>
+        <td>
+          <%= link_to 'Edit', edit_group_event_path(group_event) %>
+          <%= link_to 'Delete', group_event, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+    <% end %>
 <% end %>
