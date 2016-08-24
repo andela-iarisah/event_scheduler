@@ -33,6 +33,9 @@ gem 'devise'
 # text area formatting
 gem 'ckeditor_rails'
 
+# soft deleting
+gem "paranoia", "~> 2.0"
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   gem 'factory_girl'

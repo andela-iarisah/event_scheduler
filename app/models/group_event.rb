@@ -1,7 +1,13 @@
 class GroupEvent < ActiveRecord::Base
+  acts_as_paranoid
+
   belongs_to :user
 
   validate :no_past_date, :valid_date
+
+  scope :deleted_group_events, -> {
+    only_deleted
+  }
 
   private
 

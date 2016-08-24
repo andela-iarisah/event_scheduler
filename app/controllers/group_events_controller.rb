@@ -1,6 +1,6 @@
 class GroupEventsController < ApplicationController
   before_action :get_user
-  before_action :get_group_event, only: [:edit, :update]
+  before_action :get_group_event, only: [:edit, :update, :destroy]
 
   def index
     @group_events = GroupEvent.all
@@ -29,6 +29,16 @@ class GroupEventsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @group_event.destroy
+    redirect_to group_events_path,
+    notice: "#{@group_event.name} has been successfully deleted"
+  end
+
+  def deleted
+    @group_events = GroupEvent.deleted_group_events
   end
 
   private
