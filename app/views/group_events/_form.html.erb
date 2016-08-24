@@ -39,12 +39,13 @@
     </p>
 
     <p>
-      <%#= button_to campaign.approved?, {controller: "campaigns", action: "approve", id: campaign.id}, remote: true %>
-      <%= button_tag 'Publish', type: 'button', id: 'publish', remote: true, disabled: true %>
+      <%= f.check_box :published, { remote: true, disabled: true, id: "publish" } %>
+      <%= f.label :publish %>
+      <br>
       <small>* Fill the entire form to publish your group event</small>
     </p>
 
-    <%= f.submit "Create Group Event", button_html: {data: {disable_with: 'Please wait...'}} %>
+    <%= f.submit "Save", button_html: {data: {disable_with: 'Please wait...'}} %>
 <% end %>
 
 <%= link_to 'Back to Group Events List', group_events_path %>
