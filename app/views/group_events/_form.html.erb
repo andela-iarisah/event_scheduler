@@ -55,7 +55,7 @@
     // https://github.com/tsechingho/ckeditor-rails/issues/28
     $('.ckeditor').ckeditor();
 
-
+    // enable 'publish' checkbox if all form fields are filled
     $(document).ready(function() {
         var enablePublishedIfValid = function () {
             if ($("#group_event_name").val().trim() &&

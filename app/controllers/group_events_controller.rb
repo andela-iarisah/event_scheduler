@@ -3,7 +3,7 @@ class GroupEventsController < ApplicationController
   before_action :get_group_event, only: [:edit, :update, :destroy]
 
   def index
-    @group_events = GroupEvent.all
+    @group_events = @user.group_events
   end
 
   def new
@@ -11,7 +11,7 @@ class GroupEventsController < ApplicationController
   end
 
   def create
-    @group_event = @user.group_events.create(group_event_params)
+    @group_event = @user.group_events.new(group_event_params)
     if @group_event.save
       redirect_to group_events_path, notice: 'Group Event successfully created'
     else
