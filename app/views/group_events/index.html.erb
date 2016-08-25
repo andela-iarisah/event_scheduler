@@ -1,5 +1,6 @@
+<p><%= link_to 'Add a Group Event', new_group_event_path %></p>
+
 <% if @group_events.empty? %>
-    <p><%= link_to 'Add a Group Event', new_group_event_path %></p>
     <p><em>You don't have any group events</em></p>
 <% else %>
     <p><%= link_to 'View all archived Group Events', deleted_group_events_path %></p>
