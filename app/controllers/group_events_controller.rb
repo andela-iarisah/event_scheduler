@@ -38,7 +38,7 @@ class GroupEventsController < ApplicationController
   end
 
   def deleted
-    @group_events = GroupEvent.deleted_group_events
+    @group_events = @user.group_events.deleted_group_events
   end
 
   private

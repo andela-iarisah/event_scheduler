@@ -1,2 +1,6 @@
-<p><%= link_to 'View all Group Events', group_events_path%></p>
-<%= render 'table' %>
+<% if @group_events.empty? %>
+    <p><em>You don't have any deleted group events</em></p>
+<% else %>
+    <p><%= link_to 'View all Group Events', group_events_path %></p>
+    <%= render 'table' %>
+<% end %>

@@ -1,20 +1,17 @@
-<p><%= link_to 'Add a Group Event', new_group_event_path%></p>
-<% if current_user.group_events.present? %>
-    <table class="table table-striped">
-      <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Location</th>
-        <th>Starts on</th>
-        <th>Ends on</th>
-        <th>Duration</th>
-        <th>Status</th>
-        <th></th>
-      </tr>
-      </thead>
-      <tbody>
-      <%= render @group_events %>
-      </tbody>
-    </table>
-<% end %>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Location</th>
+    <th>Starts on</th>
+    <th>Ends on</th>
+    <th>Duration</th>
+    <th>Status</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <%= render @group_events %>
+  </tbody>
+</table>
